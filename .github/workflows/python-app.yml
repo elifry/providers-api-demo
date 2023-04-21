@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Build Docker image
-        run: docker build -t flask-api .
+        run: cd /src && docker build -t flask-api .
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
       - name: Pull Vercel environment information
