@@ -9,7 +9,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/docs"
+            "dest": "/"
         }
     ],
     "github": {
