@@ -159,7 +159,6 @@ class ProviderCollection:
     def filter_by_active(self, active):
         return [p for p in self.providers if p.active == active]
 
-    # KNOWN ISSUE: This method does not work for the numeric traits rating, id. Age is accounted for and works.
     def filter_by_traits(self, traits, providers):
         filtered_providers = []
 
