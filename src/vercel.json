@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "*.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/docs",
+        "dest": "/docs"
+      },
+      {
+        "src": "./swagger.yaml",
+        "dest": "./swagger.yaml"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/app.py"
+      }
+    ]
+  }

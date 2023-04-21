@@ -1,0 +1,101 @@
+openapi: 3.0.1
+info:
+  title: Providers API
+  description: Healthcare Providers API for UpLift coding assessment
+  version: 1.0.0
+# servers:
+# - url: ${API_URL}
+paths:
+  /providers:
+    get:
+      summary: Get a list of providers
+      description: Returns a list of providers that match the given traits and active status
+      parameters:
+      - name: active
+        in: query
+        description: A boolean value to filter by active status
+        required: false
+        schema:
+          type: boolean
+          example: true
+      - name: traits
+        in: query
+        description: A comma-separated list of traits to filter by, in the format of key:value
+        required: false
+        schema:
+          type: string
+          example: sex:female,age:25-50
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  providers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Provider'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  schemas:
+    Provider:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the provider
+        name:
+          type: string
+          description: The name of the provider
+        active:
+          type: boolean
+          description: The active status of the provider
+        traits:
+          type: object
+          description: The traits of the provider
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        rating:
+          type: number
+          description: The rating of the provider
+        frequency:
+          type: number
+          description: The frequency of the provider
+      required:
+        - id
+        - name
+        - active
+        - traits
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: The error message
+            required:
+              - message
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: The error message
+            required:
+              - message
+              
