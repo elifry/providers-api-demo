@@ -3,3 +3,4 @@ Flask==2.2.0
 Flask-RESTful==0.3.9
 jsonify==0.5
 flask-swagger-ui==4.11.1
+swagger-ui-py==22.7.13vercel 

@@ -43,6 +43,7 @@ Here are some examples of requests and responses:
 - Active providers: `/providers?active=true`
 - Inactive providers: `/providers?active=false`
 
+
 And of course you can combine all of these filters.
 
 All results will first be filtered by rating, then by how many times they have been returned, so that providers which have been returned fewer times get put towards the front of the list.
