@@ -4,6 +4,8 @@ This is a Flask Rest API that manages providers data. It allows users to filter 
 
 Solution to the [Assignment](/assignment.md)
 
+LIVE APP: https://providers-api-demo-elifry.vercel.app/docs
+
 ## Features
 
 - Load providers data from a json file
