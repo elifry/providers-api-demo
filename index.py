@@ -49,9 +49,9 @@ class Providers(Resource):
 api.add_resource(Providers, "/providers")
 
 # Add the Swagger UI interface with the / endpoint and the swagger.yaml file as config_path 
-api_doc(app, config_path="./swagger.yaml", url_prefix="/", title="API doc")
+api_doc(app, config_path="./swagger.yaml", url_prefix="/docs", title="API doc")
 
-SWAGGER_URL = '/'
+SWAGGER_URL = '/docs'
 API_URL = './swagger.yaml'
 
 # Call factory function to create our blueprint
