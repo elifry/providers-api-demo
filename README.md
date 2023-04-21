@@ -2,7 +2,7 @@
 
 This is a Flask Rest API that manages providers data. It allows users to filter providers by various attributes and skills.
 
-Solution to the [Assignment](/src/assignment.md)
+Solution to the [Assignment](/assignment.md)
 
 ## Features
 
