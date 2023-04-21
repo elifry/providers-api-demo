@@ -22,7 +22,7 @@ To run this project, you need to have Python 3 and pip installed on your system.
 - Clone this repository
 - Navigate to the project directory
 - Install the required packages using the command `pip install -r requirements.txt` or just use VSCode to install the packages by selecting the python interpreter and selecting the virtual environment
-- Run the app using the command `python app.py`
+- Run the app using the command `flask run`
 - The app will run on http://localhost:5000 by default
 - You can use any tool like Postman or curl to send requests to the app
 - Alternatively, you can use the Swagger UI to send requests to the app. To do this, run the app and navigate to http://localhost:5000/docs
