@@ -48,8 +48,8 @@ class Providers(Resource):
 # Add the Providers resource to the api with the /providers endpoint
 api.add_resource(Providers, "/providers")
 
-# Add the Swagger UI interface with the /docs endpoint and the swagger.yaml file as config_path 
-api_doc(app, config_path="./swagger.yaml", url_prefix="/docs", title="API doc")
+# Add the Swagger UI interface with the / endpoint and the swagger.yaml file as config_path 
+api_doc(app, config_path="./swagger.yaml", url_prefix="/", title="API doc")
 
 SWAGGER_URL = '/'
 API_URL = './swagger.yaml'
