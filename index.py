@@ -1,14 +1,37 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from flask_swagger_ui import get_swaggerui_blueprint
 from swagger_ui import api_doc
 from provider_collection import ProviderCollection
+from journal import Journal
 
 app = Flask(__name__)
 api = Api(app)
 
 # Global instance of ProviderCollection with data from providers.json
 provider_collection = ProviderCollection("providers.json")
+
+journal = Journal()
+
+@app.before_first_request
+def load_journal():
+    # Load the journal
+    global journal # use the global variable
+    journal = journal.from_directory("/Users/elijahfry/code/notes/journal")
+
+# A resource class for GET /incomplete_todos endpoint
+class IncompleteTodos(Resource):
+    def get(self):
+        # returns a JSON response with the incomplete todos in the journal
+        todos = journal.get_incomplete_todos()
+        print("Incomplete todos found: {}".format(len(todos)))
+        data = []
+        for todo in todos:
+            data.append({"todo": todo.description})
+        return {"incomplete_todos": data}
+
+# Add the IncompleteTodos resource to the api with the /incomplete_todos endpoint
+api.add_resource(IncompleteTodos, "/incomplete_todos")
 
 # Providers resource class for GET /providers endpoint
 class Providers(Resource):
