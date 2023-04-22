@@ -139,6 +139,17 @@ class Journal:
                     incomplete_todos.append(todo) # Add it to the list
         return incomplete_todos # Return the list of incomplete todos
 
+    def get_complete_todos(self):
+        complete_todos = [] # A list of complete Todo objects
+        print('Getting complete todos. {} entries loaded'.format(len(self.entries)))
+        for entry in self.entries:
+            # print(entry)
+            for todo in entry.today:
+                # print(todo)
+                if todo.complete: # If the todo is complete
+                    complete_todos.append(todo) # Add it to the list
+        return complete_todos # Return the list of complete todos
+
     @classmethod
     def from_directory(cls, directory):
         print('Loading from directory {}'.format(directory))

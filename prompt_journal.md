@@ -41,3 +41,11 @@ I have this: journal = Journal() @app.before_first_request def load_journal(): #
 r'([1-2][0-9]{3})/(0[1-9]|1[0-2])-(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/([0-2][0-9]|3[0-1])_(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\.md'
 
 Python - use this regex to find all markdown files that match the pattern in this path /Users/elijahfry/code/notes/journal "r'([1-2][0-9]{3})/(0[1-9]|1[0-2])-(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/([0-2][0-9]|3[0-1])_(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\.md'"
+
+> I finally fixed it with this:
+
+```
+match = re.match (r"^\s*-\s*(?:\[([x ])\]\s*)?(?:(?:<mark[^>]*>)?([\u263a-\U0001f645]+)(?:<\/mark>)?|(\d{1,2}:\d{2}))?(?:\s*(?:<mark[^>]*>)?([\u263a-\U0001f645]+)(?:<\/mark>)?|(\d{1,2}:\d{2}))?\s*(.+)$", line)
+```
+
+> And after dealing with that and modifying the match useage and todo returning a bit, it works! I have all 781 todos from my entire journal, plus all my journals loaded as data and I can work from here to add any functionality I would ever need.

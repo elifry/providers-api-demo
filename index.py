@@ -33,6 +33,20 @@ class IncompleteTodos(Resource):
 # Add the IncompleteTodos resource to the api with the /incomplete_todos endpoint
 api.add_resource(IncompleteTodos, "/incomplete_todos")
 
+# A resource class for GET /complete_todos endpoint
+class CompleteTodos(Resource):
+    def get(self):
+        # returns a JSON response with the complete todos in the journal
+        todos = journal.get_complete_todos()
+        print("Complete todos found: {}".format(len(todos)))
+        data = []
+        for todo in todos:
+            data.append({"todo": todo.description})
+        return {"complete_todos": data}
+
+# Add the CompleteTodos resource to the api with the /complete_todos endpoint
+api.add_resource(CompleteTodos, "/complete_todos")
+
 # Providers resource class for GET /providers endpoint
 class Providers(Resource):
     def get(self):
